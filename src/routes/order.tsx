@@ -30,7 +30,7 @@ function Order() {
   const isCustom = plan === "custom";
 
   function validate() {
-    const e: Record<string, string> = {};
+    const e: Partial<Record<"name"|"phone"|"address"|"pin"|"start", string>> = {};
     if (f.name.trim().length < 2) e.name = "Please enter your name.";
     if (!/^[6-9]\d{9}$/.test(f.phone.trim())) e.phone = "Enter a valid 10-digit mobile number.";
     if (f.address.trim().length < 8) e.address = "Please enter your full delivery address.";
@@ -90,7 +90,7 @@ function Order() {
           <Step n={2} t="Meals">
             <div className="grid grid-cols-3 gap-2">
               {(["lunch", "dinner", "both"] as MealType[]).map((m) => (
-                <button key={m} onClick={() => setMeal(m)} className={choice(meal === m)}>{m === "both" ? "Both" : m[0].toUpperCase() + m.slice(1)}</button>
+                <button key={m} onClick={() => setMeal(m)} className={choice(meal === m)}>{m === "both" ? "Both" : m.charAt(0).toUpperCase() + m.slice(1)}</button>
               ))}
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2">
