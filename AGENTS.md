@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Architecture rules
+- Keep AI Gateway calls in `src/lib/*.functions.ts` server functions and keep menu matching in a separate browser-safe, testable module; this keeps credentials server-side and makes recommendations verifiably menu-bound.
